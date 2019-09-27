@@ -4,10 +4,11 @@
   "pk": 1,
   "fields": {
     "title": "Article",
-    "text": "Article 1",
+    "text": "Article 17",
     "author": "Me",
     "created_at": "2019-09-03T14:17:12.139Z",
-    "updated_at": "2019-09-03T14:22:09.383Z"
+    "updated_at": "2019-09-27T17:11:33.214Z",
+    "category": 4
   }
 },
 {
@@ -18,7 +19,8 @@
     "text": "Another Article",
     "author": "Me",
     "created_at": "2019-09-03T14:06:09.002Z",
-    "updated_at": "2019-09-03T14:06:09.002Z"
+    "updated_at": "2019-09-27T17:10:39.839Z",
+    "category": 4
   }
 },
 {
@@ -29,7 +31,8 @@
     "text": "Article 3",
     "author": "He",
     "created_at": "2019-09-03T14:09:48.915Z",
-    "updated_at": "2019-09-03T14:09:48.915Z"
+    "updated_at": "2019-09-27T17:10:17.413Z",
+    "category": 2
   }
 },
 {
@@ -40,7 +43,20 @@
     "text": "Text",
     "author": "Author",
     "created_at": "2019-09-03T14:44:14.453Z",
-    "updated_at": "2019-09-03T14:44:14.453Z"
+    "updated_at": "2019-09-27T17:09:57.408Z",
+    "category": 1
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 5,
+  "fields": {
+    "title": "Test article",
+    "text": "Text",
+    "author": "Unknown",
+    "created_at": "2019-09-27T17:12:09.794Z",
+    "updated_at": "2019-09-27T17:12:09.794Z",
+    "category": 3
   }
 },
 {
@@ -49,9 +65,9 @@
   "fields": {
     "article": 1,
     "text": "Comment 1",
-    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "author": "Jane",
     "created_at": "2019-09-23T14:15:58.410Z",
-    "updated_at": "2019-09-23T14:15:58.410Z"
+    "updated_at": "2019-09-27T17:11:33.216Z"
   }
 },
 {
@@ -60,9 +76,9 @@
   "fields": {
     "article": 1,
     "text": "Comment 2",
-    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "author": "John",
     "created_at": "2019-09-23T14:17:53.017Z",
-    "updated_at": "2019-09-23T14:17:53.017Z"
+    "updated_at": "2019-09-27T17:11:33.217Z"
   }
 },
 {
@@ -82,9 +98,48 @@
   "fields": {
     "article": 2,
     "text": "Comment 4",
-    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "author": "Maks",
     "created_at": "2019-09-23T14:27:43.904Z",
-    "updated_at": "2019-09-23T14:27:43.905Z"
+    "updated_at": "2019-09-27T17:10:39.848Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 5,
+  "fields": {
+    "article": 1,
+    "text": "123",
+    "author": "Antony",
+    "created_at": "2019-09-27T17:01:38.904Z",
+    "updated_at": "2019-09-27T17:11:33.217Z"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "IT"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "Test"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "Games"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "Internet"
   }
 },
 {
@@ -92,7 +147,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$rETxGUggP9m6$1+XpTSlJd0TUOGy4a5vygINOKbNt4VBXluA1qSdpgYY=",
-    "last_login": "2019-09-23T14:35:51.420Z",
+    "last_login": "2019-09-27T17:08:11.625Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
