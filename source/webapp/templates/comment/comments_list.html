@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li><a href="{% url 'comment_add' %}">Add Comment</a></li>
+    <li><a href="{% url 'index' %}">Articles</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Comments:</h1>
+    <hr/>
+    {% for comment in comments %}
+        <p>Comment text: <b>{{ comment.text }}</b></p>
+        <p>Created by <b>{{ comment.author }}</b> at {{ comment.created_at }}</p>
+        <p>Articles name: <a href="{% url 'article_view' comment.article.id %}">{{ comment.article }}</a></p>
+            <form method="POST" action="{% url 'comment_delete' comment.pk %}">
+                {% csrf_token %}
+                <a href="{% url 'comment_update' comment.pk %}">Edit</a>
+                <input type="submit" class="form-error" value="Delete">
+            </form>
+        <hr/>
+    {% endfor %}
+{% endblock %}
