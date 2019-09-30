@@ -3,13 +3,24 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block menu %}
-    <li><a href="{% url "article_update" article.pk %}">Edit</a></li>
-    <li><a href="{% url "article_delete" article.pk %}">Delete</a></li>
+	<li><a href="{% url "article_update" article.pk %}">Edit</a></li>
+	<li><a href="{% url "article_delete" article.pk %}">Delete</a></li>
 {% endblock %}
 
 {% block content %}
-    <h1>{{ article.title }}</h1>
-    <p>Created by {{ article.author }} ({{ article.category|default_if_none:'Без категории' }})
-            at {{ article.created_at|date:'d.m.Y H:i:s' }}</p>
-    <div class="pre">{{ article.text }}</div>
+	<div class="jumbotron">
+		<h1>{{ article.title }}</h1>
+		<p>Created by {{ article.author }} ({{ article.category|default_if_none:'Без категории' }})
+		at {{ article.created_at|date:'d.m.Y H:i:s' }}</p>
+		<div class="pre">{{ article.text }}</div>
+	</div>
+	<form action="{% url 'comment_add_from_article' article.pk %}" method="POST">
+		{% csrf_token %}
+		<p>Author: <input type="text" name="author" required></p>
+		<p>Text: <textarea name="text" cols="30" rows="5"></textarea></p>
+		<p><input type="submit" value="Add comment"></p>
+		<hr>
+	</form>
+
+	{% include 'partial/comments.html' %}
 {% endblock %}

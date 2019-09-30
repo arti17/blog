@@ -8,15 +8,7 @@
 {% block content %}
     <h1>Comments:</h1>
     <hr/>
-    {% for comment in comments %}
-        <h3>Comment text: {{ comment.text }}</h3>
-        <p>Created by <b>{{ comment.author }}</b> at {{ comment.created_at }}</p>
-        <p>Articles name: <b><a href="{% url 'article_view' comment.article.id %}">{{ comment.article }}</a></b></p>
-            <form method="POST" action="{% url 'comment_delete' comment.pk %}">
-                {% csrf_token %}
-                <a href="{% url 'comment_update' comment.pk %}" class="btn btn-primary">Edit</a>
-                <input type="submit" class="btn btn-danger" value="Delete">
-            </form>
-        <hr/>
-    {% endfor %}
+    
+        {% include 'partial/comments.html' %}
+    
 {% endblock %}

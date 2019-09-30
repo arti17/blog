@@ -21,7 +21,9 @@ class ArticleView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         article_pk = kwargs.get('pk')
+        context['comments'] = Comment.objects.filter(article=article_pk).order_by('-created_at')
         context['article'] = get_object_or_404(Article, pk=article_pk)
+        # context['form'] = CommentForm()
         return context
 
 
@@ -135,3 +137,17 @@ class CommentDeleteView(View):
         comment = get_object_or_404(Comment, pk=kwargs.get('pk'))
         comment.delete()
         return redirect('comments')
+
+
+class CommentCreateViewFromArticle(View):
+    def post(self, request, *args, **kwargs):
+        article_id = get_object_or_404(Article, pk=kwargs.get('pk'))
+        author = request.POST.get('author')
+        text = request.POST.get('text')
+        comment = Comment.objects.create(
+            author = author,
+            text = text,
+            article = article_id
+        )
+
+        return redirect('article_view', pk=comment.article.pk)
