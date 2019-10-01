@@ -1,18 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from webapp.forms import ArticleForm
 from webapp.models import Article, Comment
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'article/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['articles'] = Article.objects.all()
-        return context
+    context_object_name = 'articles'
+    model = Article
+    ordering = ['-created_at']
+    paginate_by = 3
+    paginate_orphans = 1
 
 
 class ArticleView(TemplateView):
