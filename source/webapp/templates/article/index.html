@@ -6,6 +6,14 @@
 {% endblock %}
 
 {% block content %}
+    <form class="form-inline mb-3 float-right" action="" method="GET">
+        <label for="{{ form.search.id_for_label }}" class="mr-2">{{ form.search.label }}:</label>
+        {{ form.search }}
+        <input type="submit" value="Найти" class="btn btn-success">
+        {% for error in form.search.errors %}
+            <p class="form-error">{{ error }}</p>
+        {% endfor %}
+    </form>
     <h1>Articles:</h1>
     <hr/>
     {% for article in articles %}
